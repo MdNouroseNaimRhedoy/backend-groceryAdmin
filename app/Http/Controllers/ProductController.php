@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(10);
+        $products = Product::paginate(100);
 
         // if it has image then append the full url
         $products->getCollection()->transform(function ($product) {
@@ -33,7 +33,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'description' => 'required',
+            'description' => 'nullable',
             'image' => 'nullable|image',
             'price' => 'required',
             'stock' => 'required',
